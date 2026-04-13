@@ -92,4 +92,32 @@ header {
     transition: width .5s ease-out;
     /* ease-out : 빠르게 출발해서 끝날 때 서서히 멈춥 */
 }
+
+.inner_header > .kakao_impact {
+    align-items: center;
+    background-color: #ffcd00;
+    border-radius: 20px;
+    display: flex;
+    gap: 4px;
+    justify-content: flex-end;
+    padding: 8px 12px 6px 20px;
+}
+
+.inner_header > .kakao_impact > span:first-child {
+    background-image: url(../imgs/logo_kakaoimpact_250513.svg);
+    height: 15px;
+    width: 88px;
+    background-repeat: no-repeat;
+}
+
+.inner_header > .kakao_impact > span:last-child {
+    background-image: url(imgs/ico_arr_deg.svg);
+    height: 20px;
+    width: 20px;
+    transition: rotate .3s;
+}
+
+.inner_header > .kakao_impact:hover > span:last-child {
+    rotate: 45deg;
+}
 /* ---------------헤더 끝--------------- */
