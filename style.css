@@ -17,7 +17,7 @@ font-display: swap;
 /* ---------------폰트 불러오기 끝--------------- */
 
 /* ---------------노말라이즈 시작--------------- */
-body, ul, li {
+body, ul, li, h1 {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -38,11 +38,15 @@ header {
     margin: 0 auto;
     display: flex;
     gap: 10px;
-    padding: 0 80px;
     justify-content: space-between;
     align-items: center;
     max-width: 1440px;
     padding: 0 80px;
+}
+
+.inner_header > h1 {
+    width: 130px;
+    height: 42px;
 }
 
 .header_gnb_box {
@@ -52,6 +56,7 @@ header {
     padding: 0 20px;
     width: 723px;
     height: 60px;
+    border: 1px solid red
 }
 
 .header_gnb_box > ul {
@@ -73,7 +78,7 @@ header {
 }
 
 .header_gnb_box > ul > li > a > span {
-    position: absolute;
+    position: relative;
 }
 
 .header_gnb_box > ul > li > a > span::after {
@@ -119,5 +124,36 @@ header {
 
 .inner_header > .kakao_impact:hover > span:last-child {
     rotate: 45deg;
+}
+
+.inner_header > .btn_login,
+.inner_header > .channel_box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.inner_header > .btn_login:hover,
+.inner_header > .channel_box:hover {
+    background-color: #e5e7ec;
+    border-radius: 50%;
+    transition: backgorund-color .3s;
+}
+
+.inner_header > .btn_login > span {
+    display: block;
+    background: url(imgs/ico_people_bk.svg) no-repeat;
+    width: 24px; 
+    height: 24px;
+}
+
+.inner_header > .channel_box > span {
+    display: block;
+    background: url(imgs/ico_menu_bk.svg) no-repeat;
+    width: 24px; 
+    height: 24px;
 }
 /* ---------------헤더 끝--------------- */
