@@ -56,7 +56,6 @@ header {
     padding: 0 20px;
     width: 723px;
     height: 60px;
-    border: 1px solid red
 }
 
 .header_gnb_box > ul {
@@ -75,16 +74,13 @@ header {
     font-size: 20px;
     font-weight: 700;
     line-height: 1.15;
-}
-
-.header_gnb_box > ul > li > a > span {
     position: relative;
 }
 
-.header_gnb_box > ul > li > a > span::after {
+.header_gnb_box > ul > li > a::after {
     content: "";
     position: absolute;
-    top: 110%;
+    top: 80%;
     left: 0;
     width: 0;
     height: 2px;
@@ -92,7 +88,7 @@ header {
     transition: none;
 }
 
-.header_gnb_box > ul > li:hover > a > span::after {
+.header_gnb_box > ul > li:hover > a::after {
     width: 100%;
     transition: width .5s ease-out;
     /* ease-out : 빠르게 출발해서 끝날 때 서서히 멈춥 */
