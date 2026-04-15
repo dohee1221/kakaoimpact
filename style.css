@@ -153,3 +153,87 @@ header {
     height: 24px;
 }
 /* ---------------헤더 끝--------------- */
+
+/* ---------------메인 시작--------------- */
+/* 메인 공통속성 시작 */
+.main {
+    margin: 0 auto;
+    border: 1px solid red;
+}
+/* 메인 공통속성 끝 */
+
+/* 메인 - .sec2 시작 */
+.sec2 > .inner_section {
+    padding: 0 60px;
+}
+
+.sec2 > .inner_section > .content_box {
+    box-sizing: border-box;
+    padding: 120px;
+    position: relative;
+    display: flex;
+}
+
+.sec2 > .inner_section .title {
+    position: absolute;
+    top: 54px;
+    left: 120px;
+    color: #888;
+    font-size: 20px;
+    font-weight: 700;
+    word-break: keep-all;
+}
+
+.sec2 > .inner_section .text_box1 > .text1 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -.4px;
+    line-height: 1.4;
+    min-height: 380px;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 0%, 100% 외 to, from도 가능 */
+
+.sec2 > .inner_section .text_box1 .text {
+    opacity: 0; 
+    animation: fadeInUp 0.8s ease forwards; 
+    /* forwards: 애니메이션 끝난 상태 유지 -> 100% 상태(opacity: 1) 유지 */
+}
+
+.sec2 > .inner_section .text_box1 .line1 { 
+    animation-delay: 0.3s; 
+    /* animation-delay는 애니메이션 지연시간(.3s 후 시작) */
+}
+
+.sec2 > .inner_section .text_box1 .line2 {
+    animation-delay: 0.6s; 
+}
+
+.sec2 > .inner_section .text_box1 .line3 { 
+    animation-delay: 0.9s; 
+}
+
+.sec2 > .inner_section .text_box1 .line4 { 
+    animation-delay: 1.2s; 
+}
+
+.sec2 > .inner_section .text_box1 .line5 { 
+    animation-delay: 1.5s; 
+}
+
+/* 메인 - .sec2 끝 */
+/* ---------------메인 끝--------------- */
