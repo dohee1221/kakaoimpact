@@ -158,7 +158,6 @@ header {
 /* 메인 공통속성 시작 */
 .main {
     margin: 0 auto;
-    border: 1px solid red;
 }
 /* 메인 공통속성 끝 */
 
@@ -172,6 +171,7 @@ header {
     padding: 120px;
     position: relative;
     display: flex;
+    justify-content: space-between;
 }
 
 .sec2 > .inner_section .title {
@@ -235,5 +235,17 @@ header {
     animation-delay: 1.5s; 
 }
 
+.sec2 > .inner_section > .content_box > .img_box {
+    width: 300px;
+}
+
+.sec2 > .inner_section > .content_box > .img_box {
+    margin-top: 100px;
+    width: 150px;
+}
+
+.sec2 > .inner_section > .content_box > .img_box > img {
+    width: 300px;
+}
 /* 메인 - .sec2 끝 */
 /* ---------------메인 끝--------------- */
