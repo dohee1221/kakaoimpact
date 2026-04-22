@@ -248,4 +248,72 @@ header {
     width: 300px;
 }
 /* 메인 - .sec2 끝 */
+
+/* 메인 - .sec3 시작 */
+.sec3 {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1440px;
+    overflow: hidden;
+    padding: 0 60px;
+} 
+
+.sec3  > .tit_main {
+    margin: 140px 0 80px;
+    font-size: 44px;
+    display: flex;
+    justify-content: center;
+}
+
+.sec3  > .item_card1 {
+    height: 643px;
+    width: 370px;
+    background-color: #f7f8fd;
+    border-radius: 32px;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 32px;
+    position: relative;
+    transition: all .3s;
+}
+
+.sec3  > .item_card1 > .wrap_text {
+    position: relative;
+    transform-origin: left top;
+    transition: transform .3s ease;
+    word-break: keep-all;
+    /* word-break: keep-all; -> 단어가 중간에 끊기지 않고 다음 줄로 넘어가게 만드는 */
+    z-index: 10;
+}
+
+.sec3  > .item_card1:hover > .wrap_text {
+    transform: scale(1.0737);
+}
+.sec3  > .item_card1 > .character {
+    bottom: -84px;
+    right: -48px;
+    transition: all .3s;
+    position: relative;
+}
+
+.sec3  > .item_card1 > .character {
+    bottom: -35px;
+    right: -47px;
+    position: absolute;
+}
+
+.sec3  > .item_card1:hover > .character {
+    bottom: -35px;
+    right: -47px;
+    transform: scale(1.52);
+}
+
+.sec3  > .item_card1 > .character > .eyes {
+    left: 61px;
+    top: 40px;
+    position: absolute;
+}
+
+/* 메인 - .sec3 끝 */
 /* ---------------메인 끝--------------- */
