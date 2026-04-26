@@ -295,8 +295,9 @@ header {
 .sec3  > .item_card1 > .character {
     bottom: -35px;
     right: -47px;
-    transition: all .3s;
+    transition: transform 0.3s ease;
     position: absolute;
+    pointer-events: none;
 }
 
 .sec3  > .item_card1:hover > .character {
@@ -307,22 +308,19 @@ header {
    마우스 방향 감지 기능 (CSS 트릭)
    --------------------------------------------------- */
    
-/* 1. 투명 감지 구역 스타일 (카드 위를 3등분하여 덮음) */
+/* 1. 투명 감지 구역 스타일 (카드 위를 2등분하여 덮음) */
 .track-zone {
     position: absolute;
     top: 0;
     height: 100%;
     width: 33.33%;
-    z-index: 20; /* 마우스를 가장 먼저 인식해야 하므로 텍스트(z-index:10)보다 높게 설정 */
+    z-index: 20; 
 }
 .zone-left { left: 0; }
-.zone-center { left: 33.33%; }
 .zone-right { right: 0; }
 
-/* 바탕 얼굴은 항상 보여야 하므로 강제 표시 */
 .sec3 > .item_card1 > .character > .face_bg {
     opacity: 1;
-    visibility: visible;
 }
 
 /* 2. 눈동자 공통 스타일 */
@@ -330,8 +328,10 @@ header {
     position: absolute;
     left: 61px;
     top: 40px;
-    opacity: 0; /* 기본적으로 모두 숨김 */
-    transition: opacity 0.3s ease, transform 0.3s ease; /* 이미지가 부드럽게 교체되도록 설정 */
+    opacity: 0; 
+    z-index: 10;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out; /* 이미지가 부드럽게 교체되도록 설정 */
 }
 
 /* 3. 기본 활성화/* ✅ 1. 캐릭터 스타일 병합 및 기존 위치 유지 (bottom 값을 -84px로 수정) */
@@ -365,30 +365,27 @@ header {
 /* 얼굴 바탕 표시 (유지) */
 .sec3 > .item_card1 > .character > .face_bg {
     opacity: 1;
-    visibility: visible;
 }
 
-/* ✅ 3. 눈동자 공통 스타일 (겹침 문제 해결을 위해 visibility 추가 및 z-index 조정) */
 .sec3 > .item_card1 > .character > .eye {
     position: absolute;
     left: 61px;
     top: 40px;
-    opacity: 0; /* 기본적으로 모두 숨김 */
-    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
     transition: opacity 0.15s ease-in-out;
-    z-index: 10; /* 눈이 다른 얼굴 요소보다 위에 오도록 */
+    z-index: 10; 
 }
 
-/* ✅ 4. 기본 상태 (카드 외부 또는 감지 구역 밖) - 정면 눈 표시 (active 클래스 사용 안 함) */
-/* 카드가 호버되지 않았을 때 정면 눈(yellow_eyes.svg)을 표시합니다. */
 .sec3 > .item_card1 > .character > .eye-default {
     opacity: 1;
-    visibility: visible;
 }
 
-/* ✅ 5. hover 이벤트 연결 (왼쪽으로 마우스 이동 시) - 눈 전환 로직 */
-/* 마우스가 왼쪽 구역에 가면 정면 눈을 숨기고 왼쪽 눈(eye-other)을 켭니다. */
-.zone-left:hover ~ .character .eye-default { opacity: 0; visibility: hidden; }
-.zone-left:hover ~ .character .eye-other { opacity: 1; visibility: visible; }
+.zone-left:hover ~ .character .eye-default { 
+    opacity: 0;  
+}
+.zone-left:hover ~ .character .eye-other { 
+    opacity: 1; 
+}
 /* 메인 - .sec3 끝 */
 /* ---------------메인 끝--------------- */
