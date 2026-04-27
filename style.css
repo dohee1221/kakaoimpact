@@ -259,14 +259,14 @@ header {
     padding: 0 60px;
 } 
 
-.sec3  > .tit_main {
+.sec3 > .tit_main {
     margin: 140px 0 80px;
     font-size: 44px;
     display: flex;
     justify-content: center;
 }
 
-.sec3  > .item_card1 {
+.sec3 > .item_card1 {
     height: 643px;
     width: 370px;
     background-color: #f7f8fd;
@@ -278,8 +278,10 @@ header {
     transition: all .3s;
 }
 
-/* 텍스트 래퍼 */
-.sec3  > .item_card1 > .wrap_text {
+/* =========================================
+   2. 텍스트 영역 설정
+   ========================================= */
+.sec3 > .item_card1 > .wrap_text {
     position: relative;
     transform-origin: left top;
     transition: transform .3s ease;
@@ -287,71 +289,33 @@ header {
     z-index: 10;
 }
 
-.sec3  > .item_card1:hover > .wrap_text {
+.sec3 > .item_card1:hover > .wrap_text {
     transform: scale(1.0737);
 }
 
-/* ✅ 중복되었던 .character 코드 병합 및 정리 */
-.sec3  > .item_card1 > .character {
-    bottom: -35px;
-    right: -47px;
-    transition: transform 0.3s ease;
-    position: absolute;
-    pointer-events: none;
-}
-
-.sec3  > .item_card1:hover > .character {
-    transform: scale(1.52);
-}
-
-/* ---------------------------------------------------
-   마우스 방향 감지 기능 (CSS 트릭)
-   --------------------------------------------------- */
-   
-/* 1. 투명 감지 구역 스타일 (카드 위를 2등분하여 덮음) */
-.track-zone {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 33.33%;
-    z-index: 20; 
-}
-.zone-left { left: 0; }
-.zone-right { right: 0; }
-
-.sec3 > .item_card1 > .character > .face_bg {
-    opacity: 1;
-}
-
-/* 2. 눈동자 공통 스타일 */
-.sec3 > .item_card1 > .character > .eye {
-    position: absolute;
-    left: 61px;
-    top: 40px;
-    opacity: 0; 
-    z-index: 10;
-    pointer-events: none;
-    transition: opacity 0.3s ease-in-out; /* 이미지가 부드럽게 교체되도록 설정 */
-}
-
-/* 3. 기본 활성화/* ✅ 1. 캐릭터 스타일 병합 및 기존 위치 유지 (bottom 값을 -84px로 수정) */
-.sec3  > .item_card1 > .character {
-    bottom: -84px; /* 기존 코드의 -84px 유지 */
+/* =========================================
+   3. 캐릭터 공통 설정
+   ========================================= */
+.sec3 > .item_card1 > .character {
+    bottom: -84px;
     right: -48px;
     transition: all .3s;
     position: absolute;
 }
 
-/* 카드 호버 시 캐릭터 확대 유지 (유지) */
-.sec3  > .item_card1:hover > .character {
-    transform: scale(1.52);
+/* 카드 호버 시 캐릭터 확대 */
+.sec3 > .item_card1:hover > .character {
+    transform: scale(2);
 }
 
-/* ---------------------------------------------------
-   마우스 방향 감지 기능 (2구역 분할) - 겹침 문제 해결
-   --------------------------------------------------- */
-   
-/* 2. 투명 감지 구역 스타일 (유지) */
+/* 얼굴 바탕 표시 */
+.sec3 > .item_card1 > .character > .face_bg {
+    opacity: 1;
+}
+
+/* =========================================
+   4. 마우스 감지 투명 구역 설정
+   ========================================= */
 .track-zone {
     position: absolute;
     top: 0;
@@ -359,32 +323,61 @@ header {
     width: 50%;
     z-index: 20; /* 텍스트(z-index:10)보다 높게 설정 */
 }
+
 .zone-left { left: 0; }
 .zone-right { right: 0; }
 
-/* 얼굴 바탕 표시 (유지) */
-.sec3 > .item_card1 > .character > .face_bg {
-    opacity: 1;
-}
+/* =========================================
+   5. [새로 추가된 부분] 눈동자 스르륵 전환 효과
+   ========================================= */
 
-.sec3 > .item_card1 > .character > .eye {
+/* 기본 눈 (배경 이미지로 설정) */
+.sec3 > .item_card1 > .character > .eyes {
     position: absolute;
     left: 61px;
     top: 40px;
-    opacity: 0;
+    width: 80px; 
+    height: 100px; 
+    z-index: 10;
     pointer-events: none;
-    transition: opacity 0.15s ease-in-out;
-    z-index: 10; 
 }
 
-.sec3 > .item_card1 > .character > .eye-default {
-    opacity: 1;
+/* 2) 기본 눈 (::before 가상 요소) */
+.sec3 > .item_card1 > .character > .eyes::before {
+    content: ""; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('imgs/yellow_eyes.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1; /* 평소엔 선명하게 보임 */
 }
 
-.zone-left:hover ~ .character .eye-default { 
-    opacity: 0;  
+/* 3) 다른 곳을 보는 눈 (::after 가상 요소) */
+.sec3 > .item_card1 > .character > .eyes::after {
+    content: ""; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('imgs/yellow_eyes2.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0; /* 평소엔 완전히 투명하게 숨김 */
 }
-.zone-left:hover ~ .character .eye-other { 
+
+/* 4) 마우스가 왼쪽 구역에 올라갔을 때의 변화 */
+.zone-left:hover ~ .character .eyes::before {
+    opacity: 0;
+}
+
+.zone-left:hover ~ .character .eyes::after {
     opacity: 1; 
 }
 /* 메인 - .sec3 끝 */
