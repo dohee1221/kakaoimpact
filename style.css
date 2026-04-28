@@ -314,24 +314,8 @@ header {
 }
 
 /* =========================================
-   4. 마우스 감지 투명 구역 설정
+   4. [수정됨] 눈동자 기본 설정 (jQuery 연동)
    ========================================= */
-.track-zone {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 50%;
-    z-index: 20; /* 텍스트(z-index:10)보다 높게 설정 */
-}
-
-.zone-left { left: 0; }
-.zone-right { right: 0; }
-
-/* =========================================
-   5. [새로 추가된 부분] 눈동자 스르륵 전환 효과
-   ========================================= */
-
-/* 기본 눈 (배경 이미지로 설정) */
 .sec3 > .item_card1 > .character > .eyes {
     position: absolute;
     left: 61px;
@@ -340,45 +324,27 @@ header {
     height: 100px; 
     z-index: 10;
     pointer-events: none;
-}
-
-/* 2) 기본 눈 (::before 가상 요소) */
-.sec3 > .item_card1 > .character > .eyes::before {
-    content: ""; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    
+    /* 기본 눈 (왼쪽을 보는 이미지) */
     background-image: url('imgs/yellow_eyes.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 1; /* 평소엔 선명하게 보임 */
 }
 
-/* 3) 다른 곳을 보는 눈 (::after 가상 요소) */
-.sec3 > .item_card1 > .character > .eyes::after {
-    content: ""; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+/* =========================================
+   5. [수정됨] jQuery 클래스에 따른 이미지 교체
+   ========================================= */
+
+/* 마우스가 왼쪽으로 갈 때 (기본 눈과 동일) */
+.sec3 > .item_card1 > .character > .eyes.look-left {
+    background-image: url('imgs/yellow_eyes.svg');
+}
+
+/* 마우스가 오른쪽으로 갈 때 (다른 눈 이미지로 교체) */
+.sec3 > .item_card1 > .character > .eyes.look-right {
     background-image: url('imgs/yellow_eyes2.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0; /* 평소엔 완전히 투명하게 숨김 */
 }
 
-/* 4) 마우스가 왼쪽 구역에 올라갔을 때의 변화 */
-.zone-left:hover ~ .character .eyes::before {
-    opacity: 0;
-}
-
-.zone-left:hover ~ .character .eyes::after {
-    opacity: 1; 
-}
 /* 메인 - .sec3 끝 */
 /* ---------------메인 끝--------------- */
