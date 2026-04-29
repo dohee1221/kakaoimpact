@@ -347,4 +347,78 @@ header {
 }
 
 /* 메인 - .sec3 끝 */
+
+/* 메인 - .sec4 시작 */
+
+.sec4 {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1440px;
+    overflow: hidden;
+    padding: 0 60px 140px;
+}
+
+.sec4 > h4 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -.5px;
+    line-height: 1.25;
+    margin-bottom: 40px;
+    margin-top: 100px;
+    text-align: center;
+    word-break: keep-all;
+    /* word-break: keep-all; -> 텍스트 끝에서 단어가 끊기지 않도록 제어 */
+}
+
+.sec4  .list_wrap {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+}
+
+.sec4  .list_wrap  a{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sec4  .list_wrap  a .thumb-g {
+    transform: translateY(0);
+    transform: translateZ(0);
+    transition: transform .25s cubic-bezier(.22, .61, .36, 1), box-shadow .25s ease;
+    will-change: transform, box-shadow;
+}
+
+.sec4  .list_wrap  a:hover .thumb-g {
+    transform: translateY(-10px);
+}
+
+.sec4  .list_wrap  a .thumb-g > img {
+    border-radius: 16px;
+    width: 392px;
+    height: 242px;
+    object-fit: cover;
+}
+
+.sec4  .list_wrap  a .wrap_cont {
+    padding: 20px 4px 0;;
+}
+
+.sec4  .list_wrap  a .wrap_cont > .txt_sub {
+    color: #999;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+    margin-top: 0;
+}
+
+.sec4  .list_wrap  a .wrap_cont > .tit_info {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    word-break: keep-all;
+}
+
+/* 메인 - .sec4 끝 */
 /* ---------------메인 끝--------------- */
