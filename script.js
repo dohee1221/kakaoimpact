@@ -31,3 +31,13 @@ $(function(){
         $(this).find('.eyes').removeClass('look-right look-left');
     });
 });
+
+//sec5-ico_share 클릭 시 이미지 변화
+
+$(function(){
+    $('.ico_share').click(function(e){
+        e.preventDefault(); 
+        
+        $(this).addClass('click'); 
+    });
+});
