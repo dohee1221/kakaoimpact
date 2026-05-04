@@ -519,5 +519,37 @@ header {
     text-align: center;
     vertical-align: top;
 }
+
+.box_value > .cont_values {
+    color: #fff;
+    padding-top: 80px;
+    text-align: center;
+}
+
+.box_value > .cont_values > .wrap_tag {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+.box_value > .cont_values > .wrap_tag > span {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 99px;
+    color: #222;
+    display: inline-flex;
+    font-size: 30px;
+    font-weight: 700;
+    gap: 16px;
+    justify-content: center;
+    /* opacity: 0;      */
+    padding: 20px 30px;
+    white-space: nowrap;
+}
+
+.box_value > .cont_values > .wrap_tag > .tag1 {
+    background-color: #ff5a4d;
+}
 /* 메인 - .sec5 끝 */
 /* ---------------메인 끝--------------- */
