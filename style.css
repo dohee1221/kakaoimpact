@@ -539,17 +539,60 @@ header {
     border-radius: 99px;
     color: #222;
     display: inline-flex;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
     gap: 16px;
     justify-content: center;
-    /* opacity: 0;      */
+    opacity: 0;      
     padding: 20px 30px;
     white-space: nowrap;
+    
+    /* 애니메이션 설정 */
+    animation-name: dropThenShake;
+    animation-duration: 1.5s; /* 두 가지 동작이 순서대로 일어나므로 시간을 2초로 여유 있게 잡았습니다 */
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards; 
 }
 
-.box_value > .cont_values > .wrap_tag > .tag1 {
-    background-color: #ff5a4d;
+/* 각 태그별 배경색과 최종 회전 각도(CSS 변수 --deg) 설정 */
+.box_value > .cont_values > .wrap_tag > .tag1 { background-color: #ff5a4d; --deg: -10deg; }
+.box_value > .cont_values > .wrap_tag > .tag2 { --deg: 12deg; }
+.box_value > .cont_values > .wrap_tag > .tag3 { background-color: #26ffa6; --deg: -20deg; }
+.box_value > .cont_values > .wrap_tag > .tag4 { background-color: #9c9cff; --deg: 18deg; }
+.box_value > .cont_values > .wrap_tag > .tag5 { --deg: 12deg; }
+.box_value > .cont_values > .wrap_tag > .tag6 { background-color: #f299f9; --deg: -10deg; }
+.box_value > .cont_values > .wrap_tag > .tag7 { background-color: #ffd000; --deg: 6deg; }
+
+/* 위에서 떨어지고 난 뒤 흔들리는 키프레임 */
+@keyframes dropThenShake {
+    /* [1단계: 위에서 아래로 떨어지기] */
+    0% {
+        opacity: 0;
+        /* 위쪽(-150px)에서 시작. 아직 회전하지 않고 똑바른 상태(0deg) */
+        transform: translateY(-715px) rotate(0deg); 
+    }
+    40% {
+        opacity: 1;
+        /* 제자리(0px)로 툭 떨어짐. 여기까지도 똑바른 상태 유지 */
+        transform: translateY(0) rotate(0deg); 
+    }
+    
+    /* [2단계: 도착 후 제자리에서 좌우로 흔들리기] */
+    65% {
+        opacity: 1;
+        /* 제자리에서 한쪽으로 휙 기울어짐 (목표 각도보다 더 크게) */
+        transform: translateY(0) rotate(calc(var(--deg) + 20deg)); 
+    }
+    85% {
+        opacity: 1;
+        /* 반대쪽으로 까딱하고 기울어짐 */
+        transform: translateY(0) rotate(calc(var(--deg) - 10deg)); 
+    }
+    100% {
+        opacity: 1;
+        /* 최종적으로 지정된 각도(--deg)에 멈춤 */
+        transform: translateY(0) rotate(var(--deg)); 
+    }
 }
 /* 메인 - .sec5 끝 */
 /* ---------------메인 끝--------------- */
