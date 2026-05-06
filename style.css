@@ -547,50 +547,141 @@ header {
     padding: 20px 30px;
     white-space: nowrap;
     
-    /* 애니메이션 설정 */
-    animation-name: dropThenShake;
-    animation-duration: 1.5s; /* 두 가지 동작이 순서대로 일어나므로 시간을 2초로 여유 있게 잡았습니다 */
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards; 
+    /* 💡 애니메이션 2개(떨어지기, 흔들리기)를 쉼표로 구분하여 동시 적용 */
+    animation-name: dropAndBounce, shakeTogether;
+    /* 각각의 애니메이션 진행 시간 (0.8초 동안 떨어지고, 0.8초 동안 흔들림) */
+    animation-duration: 0.8s, 0.8s; 
+    animation-timing-function: ease-out, ease-in-out;
+    animation-fill-mode: both, both;
 }
 
-/* 각 태그별 배경색과 최종 회전 각도(CSS 변수 --deg) 설정 */
-.box_value > .cont_values > .wrap_tag > .tag1 { background-color: #ff5a4d; --deg: -10deg; }
-.box_value > .cont_values > .wrap_tag > .tag2 { --deg: 12deg; }
-.box_value > .cont_values > .wrap_tag > .tag3 { background-color: #26ffa6; --deg: -20deg; }
-.box_value > .cont_values > .wrap_tag > .tag4 { background-color: #9c9cff; --deg: 18deg; }
-.box_value > .cont_values > .wrap_tag > .tag5 { --deg: 12deg; }
-.box_value > .cont_values > .wrap_tag > .tag6 { background-color: #f299f9; --deg: -10deg; }
-.box_value > .cont_values > .wrap_tag > .tag7 { background-color: #ffd000; --deg: 6deg; }
+/* 💡 딜레이도 쉼표로 2개를 적습니다. 
+  앞의 숫자 = 떨어지기 시작하는 시간 (순차적)
+  뒤의 숫자 = 2.2s (마지막 태그가 다 떨어질 때까지 기다렸다가 다 같이 흔들리기 시작하는 시간) 
+*/
+.box_value > .cont_values > .wrap_tag > .tag1 { 
+    background-color: #ff5a4d; 
+    --deg: -10deg; 
+    animation-delay: 0s, 2.2s;    
+}
 
-/* 위에서 떨어지고 난 뒤 흔들리는 키프레임 */
-@keyframes dropThenShake {
-    /* [1단계: 위에서 아래로 떨어지기] */
+.box_value > .cont_values > .wrap_tag > .tag2 { 
+    --deg: 12deg; 
+    animation-delay: 0.2s, 2.2s; 
+}
+
+.box_value > .cont_values > .wrap_tag > .tag3 { 
+    background-color: #26ffa6; 
+    --deg: -20deg; 
+    animation-delay: 0.4s, 2.2s;  
+}
+
+.box_value > .cont_values > .wrap_tag > .tag4 { 
+    background-color: #9c9cff; 
+    --deg: 18deg; 
+    animation-delay: 0.6s, 2.2s; 
+}.box_value > .cont_values > .wrap_tag > span {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 99px;
+    color: #222;
+    display: inline-flex;
+    font-size: 25px;
+    font-weight: 700;
+    gap: 16px;
+    justify-content: center;
+    opacity: 0;      
+    padding: 20px 30px;
+    white-space: nowrap;
+    
+    /* 애니메이션 설정 */
+    animation-name: dropAndBounce, shakeTogether;
+    animation-duration: 0.8s, 0.8s; 
+    animation-timing-function: ease-out, ease-in-out;
+    
+    /* 💡 핵심 수정: 두 번째 값을 forwards로 변경합니다! */
+    animation-fill-mode: both, forwards;
+}
+
+/* 아래 태그별 딜레이와 @keyframes는 이전과 동일하게 유지하시면 됩니다 */
+.box_value > .cont_values > .wrap_tag > .tag1 { 
+    background-color: #ff5a4d; 
+    --deg: -10deg; 
+    animation-delay: 0s, 2.2s;    
+}
+
+.box_value > .cont_values > .wrap_tag > .tag2 { 
+    --deg: 12deg; 
+    animation-delay: 0.2s, 2.2s; 
+}
+
+.box_value > .cont_values > .wrap_tag > .tag3 { 
+    background-color: #26ffa6; 
+    --deg: -20deg; 
+    animation-delay: 0.4s, 2.2s;  
+}
+
+.box_value > .cont_values > .wrap_tag > .tag4 { 
+    background-color: #9c9cff; 
+    --deg: 18deg; 
+    animation-delay: 0.6s, 2.2s; 
+}
+
+.box_value > .cont_values > .wrap_tag > .tag5 { 
+    --deg: 12deg; 
+    animation-delay: 0.8s, 2.2s; 
+}
+
+.box_value > .cont_values > .wrap_tag > .tag6 { 
+    background-color: #f299f9; 
+    --deg: -10deg; 
+    animation-delay: 1.0s, 2.2s;
+}
+
+.box_value > .cont_values > .wrap_tag > .tag7 { 
+    background-color: #ffd000; 
+    --deg: 6deg; 
+    animation-delay: 1.2s, 2.2s;
+}
+
+@keyframes dropAndBounce {
     0% {
         opacity: 0;
-        /* 위쪽(-150px)에서 시작. 아직 회전하지 않고 똑바른 상태(0deg) */
-        transform: translateY(-715px) rotate(0deg); 
+        transform: translateY(-750px) rotate(0deg); 
     }
     40% {
         opacity: 1;
-        /* 제자리(0px)로 툭 떨어짐. 여기까지도 똑바른 상태 유지 */
         transform: translateY(0) rotate(0deg); 
     }
-    
-    /* [2단계: 도착 후 제자리에서 좌우로 흔들리기] */
-    65% {
+    60% {
         opacity: 1;
-        /* 제자리에서 한쪽으로 휙 기울어짐 (목표 각도보다 더 크게) */
-        transform: translateY(0) rotate(calc(var(--deg) + 20deg)); 
+        transform: translateY(-80px) rotate(0deg);
     }
-    85% {
+    80% {
         opacity: 1;
-        /* 반대쪽으로 까딱하고 기울어짐 */
-        transform: translateY(0) rotate(calc(var(--deg) - 10deg)); 
+        transform: translateY(0px) rotate(0deg);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(-80px) rotate(0deg);
     }
     100% {
         opacity: 1;
-        /* 최종적으로 지정된 각도(--deg)에 멈춤 */
+        transform: translateY(0) rotate(0deg); 
+    }
+}
+
+@keyframes shakeTogether {
+    0% {
+        transform: translateY(0) rotate(0deg); 
+    }
+    40% {
+        transform: translateY(0) rotate(calc(var(--deg) + 20deg)); 
+    }
+    75% {
+        transform: translateY(0) rotate(calc(var(--deg) - 10deg)); 
+    }
+    100% {
         transform: translateY(0) rotate(var(--deg)); 
     }
 }
