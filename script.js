@@ -41,3 +41,12 @@ $(function(){
         $(this).addClass('click'); 
     });
 });
+
+// sec6 클릭 시 li active class 추가 
+$(function() {
+    $('.list_xscroll > li').click(function(){
+
+        $('.list_xscroll > li').removeClass('active');
+        $(this).addClass('active');
+    })
+});

@@ -350,7 +350,7 @@ header {
 
 /* 메인 - .sec4 시작 */
 
-.sec4, .sec5 {
+.sec4, .sec5, .sec6 {
     box-sizing: border-box;
     margin: 0 auto;
     max-width: 1440px;
@@ -686,4 +686,68 @@ header {
     }
 }
 /* 메인 - .sec5 끝 */
+
+/* 메인 - .sec6 시작 */
+.list_xscroll {
+    display: flex;
+    gap: 32px;
+    margin-top: 80px;
+    padding: 0;
+}
+
+.list_xscroll > li {
+    cursor: pointer;
+    scroll-snap-align: start;
+    text-align: center;
+    transition: width .25s ease-in;
+    width: 185px;
+}
+
+.list_xscroll > li.active {
+    opacity: 1;
+    width: 453px;
+}
+
+.list_xscroll > li > .card {
+    border-radius: 20px;
+    cursor: pointer;
+    height: 340px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.list_xscroll > li > .card > img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+}
+
+.list_xscroll > li > .card > .txt_info {
+    bottom: 73px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    left: 32px;
+    letter-spacing: -.5px;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 32px;
+    text-align: left;
+    text-shadow: 0 8px 28px rgba(19, 25, 39, .12), 0 18px 88px rgba(19, 25, 39, .14);
+    z-index: 10;
+}
+
+.list_xscroll > li > .card > .txt_info > p {
+    opacity: 0;
+    transition: transform .4s ease, opacity .4s ease-in;
+    white-space: nowrap;
+}
+
+.list_xscroll > li.active > .card > .txt_info > p {
+    opacity: 1;
+}
+
+/* 메인 - .sec6 끝 */
 /* ---------------메인 끝--------------- */
